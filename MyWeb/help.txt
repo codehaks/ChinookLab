@@ -1,0 +1,5 @@
+﻿
+
+$ dotnet tool install --global dotnet-ef --version 3.0.0-*
+
+dotnet ef dbcontext scaffold "Data Source=chinook.db" Microsoft.EntityFrameworkCore.Sqlite --context-dir Data -o Models -c ChinbookContext --project MyWeb
