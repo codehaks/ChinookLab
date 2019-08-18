@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "ChinookLab.Protos";
+
+package Albums;
+
+
+service AlbumsService {
+
+  rpc GetAlbum (AlbumRequest) returns (AlbumReply) {}
+}
+
+
+message AlbumRequest {
+  int64 AlbumId = 1;
+}
+
+
+message AlbumReply {
+  int64 AlbumId =1;
+ string Title =2;
+  int64 ArtistId=3;
+  }
