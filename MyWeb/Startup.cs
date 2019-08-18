@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyWeb.Models;
+using ServerApp.Services;
 
 namespace MyWeb
 {
@@ -53,8 +54,12 @@ namespace MyWeb
 
             app.UseAuthorization();
 
+      
+
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapGrpcService<AlbumService>();
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
