@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ServerApp.Services;
 
 namespace TestApp
 {
@@ -31,7 +32,7 @@ namespace TestApp
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<GreeterService>();
+                endpoints.MapGrpcService<AlbumService>();
 
                 endpoints.MapGet("/", async context =>
                 {

@@ -1,15 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+    <PackageReference Include="Grpc.AspNetCore" Version="0.1.22-pre2" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Grpc.AspNetCore" Version="0.1.22-pre2" />
+    <Protobuf Include="..\Albums.proto">
+      <Link>Albums.proto</Link>
+    </Protobuf>
   </ItemGroup>
 
 </Project>
