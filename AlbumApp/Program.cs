@@ -12,7 +12,7 @@ namespace AlbumApp
             Console.WriteLine("Starting GRPC Client...");
             Console.WriteLine();
 
-            var channel = new Grpc.Core.Channel("localhost:5000", SslCredentials.Insecure);
+            var channel = new Grpc.Core.Channel("localhost:5001", SslCredentials.Insecure);
 
             var client = new AlbumsService.AlbumsServiceClient (channel);
 
