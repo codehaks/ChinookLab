@@ -25,8 +25,8 @@ namespace MyWeb
                     {
                         options.ListenLocalhost(5001, listenOptions =>
                         {
-                            listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
-                            listenOptions.UseHttps("testcert.pfx", "123456");
+                            listenOptions.Protocols = HttpProtocols.Http2;
+                            //listenOptions.UseHttps("testcert.pfx", "123456");
                         });
                     });
                     webBuilder.UseStartup<Startup>();

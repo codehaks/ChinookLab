@@ -28,7 +28,7 @@ namespace AlbumApp
             {
                 if (ex.StatusCode == StatusCode.NotFound)
                 {
-                    Console.WriteLine(ex.Status.Detail);
+                    Console.WriteLine(ex.Message);
                 }
             }
 
