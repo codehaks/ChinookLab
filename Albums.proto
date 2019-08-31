@@ -8,11 +8,19 @@ package Albums;
 service AlbumsService {
 
   rpc GetAlbum (AlbumRequest) returns (AlbumReply) {}
+  rpc GetAll(Empty) returns (AlbumListResponse){}
 }
 
+message Empty {
+
+}
 
 message AlbumRequest {
   int64 AlbumId = 1;
+}
+
+message AlbumListResponse{
+	repeated AlbumReply results=1;
 }
 
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ChinookLab.Protos;
 using Grpc.Core;
+using Microsoft.EntityFrameworkCore;
 using MyWeb.Models;
 
 namespace ServerApp.Services
@@ -22,6 +23,22 @@ namespace ServerApp.Services
             var resposne = new AlbumReply { AlbumId = model.AlbumId,ArtistId=model.ArtistId,Title=model.Title };
 
             return resposne;
+        }
+
+        public override async Task<AlbumListResponse> GetAll(Empty request, ServerCallContext context)
+        {
+            var model =  _db.Albums.Select(m => new AlbumReply { AlbumId = m.AlbumId, ArtistId = m.ArtistId, Title = m.Title });
+            var data =await model.ToListAsync();
+
+            AlbumListResponse response = new AlbumListResponse();
+
+            foreach (var item in data)
+            {
+                response.Results.Add(item);
+            }
+
+
+            return response;
         }
     }
 }

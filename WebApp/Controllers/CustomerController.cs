@@ -13,7 +13,25 @@ namespace WebApp.Controllers
         [Route("api/customer")]
         public IActionResult Index()
         {
-            return Ok("Done!");
+            var channel = new Grpc.Core.Channel("localhost:5001", SslCredentials.Insecure);
+
+            var client = new AlbumsService.AlbumsServiceClient(channel);
+
+            try
+            {
+                var response = client.GetAll(new Empty());
+
+                return Ok(response);
+            }
+            catch (RpcException ex)
+            {
+                if (ex.StatusCode == Grpc.Core.StatusCode.NotFound)
+                {
+                    return NotFound();
+                }
+            }
+
+            return NotFound();
         }
 
         [Route("api/customer/{customerId}")]
