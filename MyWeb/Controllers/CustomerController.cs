@@ -20,5 +20,13 @@ namespace MyWeb.Controllers
         {
             return Ok(_db.Customers);
         }
+
+        [Route("api/customer/list")]
+        public IActionResult GetList()
+        {
+            var ids=new long[] { 1,3,9,25};
+            var q = _db.Customers.Where(c=> ids.Contains(c.CustomerId));
+            return Ok(q.ToList());
+        }
     }
 }
